@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+service PersonService {
+    rpc GetAll (Empty) returns (PersonList) {}
+    rpc Get (PersonRequestId) returns (Person) {}
+    rpc Insert (Person) returns (Person) {}
+    rpc Update (Person) returns (Person) {}
+    rpc Remove (PersonRequestId) returns (Empty) {}
+}
+
+message Empty {}
+
+message Person {
+    string id = 1;
+    string name = 2;
+    int32 age = 3;
+    string address = 4;
+}
+
+message PersonList {
+    repeated Person persons = 1;
+}
+
+message PersonRequestId {
+    string id = 1;
+}
